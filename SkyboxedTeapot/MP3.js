@@ -534,15 +534,19 @@ function drawSkybox(){
 }
 
 // Function to load the image to a face of the cubemap.
-function handleTextureLoaded(image, texture) {
+function handleTextureLoaded(image, texture)
+{
   console.log("handleTextureLoaded, image = " + image);
   gl.bindTexture(gl.TEXTURE_2D, texture);
   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA,gl.UNSIGNED_BYTE, image);
-  if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
+  if (isPowerOf2(image.width) && isPowerOf2(image.height))
+	{
      gl.generateMipmap(gl.TEXTURE_2D);
      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_NEAREST);
      console.log("Loaded power of 2 texture");
-  } else {
+  }
+	else
+	{
      gl.texParameteri(gl.TETXURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
      gl.texParameteri(gl.TETXURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
      gl.texParameteri(gl.TETXURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
